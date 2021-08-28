@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/financial-express/static/css/main.a617e044.chunk.css",
+    "main.js": "/financial-express/static/js/main.debd2d4f.chunk.js",
+    "main.js.map": "/financial-express/static/js/main.debd2d4f.chunk.js.map",
+    "runtime-main.js": "/financial-express/static/js/runtime-main.4780ff6a.js",
+    "runtime-main.js.map": "/financial-express/static/js/runtime-main.4780ff6a.js.map",
+    "static/js/2.17f16715.chunk.js": "/financial-express/static/js/2.17f16715.chunk.js",
+    "static/js/2.17f16715.chunk.js.map": "/financial-express/static/js/2.17f16715.chunk.js.map",
+    "static/js/3.f2b54fb3.chunk.js": "/financial-express/static/js/3.f2b54fb3.chunk.js",
+    "static/js/3.f2b54fb3.chunk.js.map": "/financial-express/static/js/3.f2b54fb3.chunk.js.map",
+    "index.html": "/financial-express/index.html",
+    "static/css/main.a617e044.chunk.css.map": "/financial-express/static/css/main.a617e044.chunk.css.map",
+    "static/js/2.17f16715.chunk.js.LICENSE.txt": "/financial-express/static/js/2.17f16715.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/financial-express/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4780ff6a.js",
+    "static/js/2.17f16715.chunk.js",
+    "static/css/main.a617e044.chunk.css",
+    "static/js/main.debd2d4f.chunk.js"
+  ]
+}
