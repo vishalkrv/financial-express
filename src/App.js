@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useDisclosure } from "@chakra-ui/react";
+import Navbar from "./components/Navbar";
+import Info from "./components/Info";
+import { TITLE } from "./constants";
+import { processFile } from "./utils/excel";
+import PreviewModal from "./components/preview";
 
 function App() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const postUpload = (file) => {
+    const response = processFile(file);
+    console.log(response);
+    onOpen();
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar title={TITLE}></Navbar>
+      <Info onUpload={postUpload}></Info>
+      <PreviewModal onClose={onClose} isOpen={isOpen}></PreviewModal>
+    </>
   );
 }
 
