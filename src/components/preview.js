@@ -19,26 +19,32 @@ import {
   FormHelperText,
   Input,
   Stack,
-  Text
+  Text,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { COL_NAMES } from "../constants";
+import { PROFILES, COL_NAMES } from "../constants";
+import { processFile } from "../utils/excel";
 
 export default function PreviewModal(props) {
-  const { data, setData } = props;
+  const [profile] = useState(PROFILES.HDFC);
   const [preview, setPreview] = useState({});
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm({
+  const { register, handleSubmit } = useForm({
     defaultValues: [],
   });
 
   const onSubmit = (data) => {
-    console.log("submitted data", data);
+    const response = processFile(
+      null,
+      true,
+      data.startIndex,
+      COL_NAMES,
+      props.data.originalData
+    );
+
+    response.processed = true;
+    props.setData(response);
+    props.onClose();
   };
 
   const onPreview = (data) => {
@@ -50,7 +56,7 @@ export default function PreviewModal(props) {
 
   const prepData = () => {
     let rows = [];
-    let index = preview.startIndex - 1;
+    let index = preview.startIndex;
     if (preview && preview.data && preview.data.length > 0) {
       for (let i = index; i < index + 6; i++) {
         let cols = [];
@@ -58,8 +64,8 @@ export default function PreviewModal(props) {
         for (let j = 0; j < 7; j++) {
           let val = preview.data[i][temp[j]];
           cols.push(
-            <Td maxWidth={150} key={j}>
-              {val}
+            <Td key={j}>
+              <Text fontSize="xs">{val}</Text>
             </Td>
           );
         }
@@ -71,14 +77,13 @@ export default function PreviewModal(props) {
   };
 
   useEffect(() => {
-    if (data && data.parsedData) {
+    if (props.data && props.data.parsedData) {
       setPreview({
-        startIndex: 18,
-        data: data.parsedData,
-        cols: COL_NAMES,
+        data: props.data.parsedData,
+        ...profile,
       });
     }
-  }, [props.data]);
+  }, [props.data, profile]);
   return (
     <>
       <Modal
@@ -88,11 +93,11 @@ export default function PreviewModal(props) {
         blockScrollOnMount={true}
       >
         <ModalOverlay />
-        <ModalContent maxWidth={1050}>
+        <ModalContent maxWidth={1250}>
           <ModalHeader>Preview</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={10}>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} style={{ width: "250px" }}>
               <FormControl id="startIndex">
                 <FormLabel>Start Row</FormLabel>
                 <Input
@@ -101,10 +106,10 @@ export default function PreviewModal(props) {
                   {...register("startIndex", { min: 1 })}
                 />
                 <FormHelperText>
-                  Row no to start processing for transactions
+                  Row number of the first transaction
                 </FormHelperText>
               </FormControl>
-              <Text>Column Mapping</Text>
+
               <Stack direction="row" py={5} spacing={10}>
                 <Button
                   colorScheme="blue"
@@ -129,8 +134,8 @@ export default function PreviewModal(props) {
               <Thead>
                 <Tr>
                   {preview &&
-                    preview.cols &&
-                    preview.cols.map((item, index) => (
+                    preview.columns &&
+                    preview.columns.map((item, index) => (
                       <Th key={index}>{item}</Th>
                     ))}
                 </Tr>

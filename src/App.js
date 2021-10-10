@@ -4,6 +4,7 @@ import Info from "./components/Info";
 import { TITLE } from "./constants";
 import { processFile } from "./utils/excel";
 import PreviewModal from "./components/preview";
+import Analysis from "./components/Analysis";
 import { useState } from "react";
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
   const [data, setData] = useState([]);
 
   const postUpload = (file) => {
-    const response = processFile(file);
+    const response = processFile(file, false);
     setData(response);
     onOpen();
   };
@@ -19,7 +20,9 @@ function App() {
   return (
     <>
       <Navbar title={TITLE}></Navbar>
-      <Info onUpload={postUpload}></Info>
+      {(data && data.processed && <Analysis data={data}></Analysis>) || (
+        <Info onUpload={postUpload}></Info>
+      )}
       <PreviewModal
         onClose={onClose}
         isOpen={isOpen}
