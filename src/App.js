@@ -9,7 +9,11 @@ import { useState } from "react";
 
 function App() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({
+    processed: false,
+  });
+
+  // const [data, setData] = useState({});
 
   const postUpload = (file) => {
     const response = processFile(file, false);

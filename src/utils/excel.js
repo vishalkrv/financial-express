@@ -4,6 +4,7 @@ export function processFile(
   data,
   isProcessed = false,
   startIndex = 0,
+  endIndex = 0,
   header = "A",
   originalData = null
 ) {
@@ -22,6 +23,9 @@ export function processFile(
     blankrows: true,
   });
 
+  if (endIndex !== 0) {
+    excelRows = excelRows.slice(0, endIndex - startIndex + 1);
+  }
   return {
     parsedData: excelRows,
     originalData: workbook,

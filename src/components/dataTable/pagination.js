@@ -1,25 +1,29 @@
-import {Box, Button, Flex} from '@chakra-ui/react';
+import { Box, Button, Flex } from '@chakra-ui/react'
 
-export default function Pagination(
-  {
-    pageSize,
-    setPageSize,
-    pageIndex,
-    pageOptions,
-    previousPage,
-    canPreviousPage,
-    nextPage,
-    canNextPage
-  }) {
+export default function Pagination({
+  pageSize,
+  setPageSize,
+  pageIndex,
+  pageOptions,
+  previousPage,
+  canPreviousPage,
+  nextPage,
+  canNextPage,
+}) {
   return (
     <Flex direction="row" justifyContent="space-between">
-      <Flex direction="row" justifyContent="center" alignItems="center" pl="64px">
+      <Flex
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        pl="64px"
+      >
         <Box pr={4}>Rows per page:</Box>
         <select
-          style={{background: 'transparent', outline: 'none'}}
+          style={{ background: 'transparent', outline: 'none' }}
           value={pageSize}
           onChange={e => {
-            setPageSize(Number(e.target.value));
+            setPageSize(Number(e.target.value))
           }}
         >
           {[10, 20, 30, 40, 50].map(pageSize => (
@@ -41,5 +45,5 @@ export default function Pagination(
         </Button>
       </Flex>
     </Flex>
-  );
+  )
 }
