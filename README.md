@@ -1,4 +1,4 @@
-# Financial Express
-#### Video Demo:  http://www.youtube.com
+# Bank Statement Analyser
+#### Video Demo:  https://youtu.be/_BKBwIfANRk
 #### Description:
-Bank Statement Analyzer
+Analyse bank statement excel file by uploading and view in table format which provides various features like filtering, sorting, searching and prebuilt chart to visualize the spendings.
