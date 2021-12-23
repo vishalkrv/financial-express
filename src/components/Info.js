@@ -25,7 +25,7 @@ export default function Info(props) {
       }
     },
     onError(err) {
-      console.error(err);
+      if (err.status === 405) return;
       toast({
         title: "An error occurred. Please try again",
         status: "error",
