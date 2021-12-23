@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/financial-express/static/js/main.020299bf.js",
+    "main.js": "/financial-express/static/js/main.efcbfe6a.js",
     "static/js/787.2d645cf8.chunk.js": "/financial-express/static/js/787.2d645cf8.chunk.js",
     "index.html": "/financial-express/index.html",
-    "main.020299bf.js.map": "/financial-express/static/js/main.020299bf.js.map",
+    "main.efcbfe6a.js.map": "/financial-express/static/js/main.efcbfe6a.js.map",
     "787.2d645cf8.chunk.js.map": "/financial-express/static/js/787.2d645cf8.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.020299bf.js"
+    "static/js/main.efcbfe6a.js"
   ]
 }
