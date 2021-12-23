@@ -25,12 +25,13 @@ export default function Info(props) {
       }
     },
     onError(err) {
-      if (err.status === 405) return;
-      toast({
-        title: "An error occurred. Please try again",
-        status: "error",
-        isClosable: true,
-      });
+      console.error(err)
+      // if (err.status === 405) return;
+      // toast({
+      //   title: "An error occurred. Please try again",
+      //   status: "error",
+      //   isClosable: true,
+      // });
     },
     style: {
       display: "inline-block",
